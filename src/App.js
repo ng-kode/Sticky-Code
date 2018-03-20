@@ -1,25 +1,28 @@
 import React, { Component } from 'react';
 import Content from './components/content';
 import Topnav from './components/topnav';
-import { Provider } from 'react-redux'
-import reducers from './reducers'
-import { createStore, applyMiddleware } from 'redux'
+import { connect } from 'react-redux'
+import { } from '../src/actions'
 
-const store = createStore(reducers, applyMiddleware())
-
-class App extends Component {
+class App extends Component {  
   render() {
-    return (
-      <Provider store={store}>
+    return (      
         <div>
           <Topnav/>
           <div className='container-fluid'>
             <Content/>
           </div>          
-        </div>
-      </Provider>
+        </div>      
     );
   }
 }
 
-export default App;
+const mapStateToProps = (state, ownProps) => ({
+  ...state, ...ownProps
+})
+
+const mapDispatchToProps = {
+  
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(App)

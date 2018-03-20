@@ -8,6 +8,8 @@ import Note from '../note';
 class Notes extends Component {
     
     render() {
+        console.log(this.props.window);
+
         const packeryOps = `{
             "itemSelector": ".note",
             "gutter": 10
@@ -23,7 +25,7 @@ class Notes extends Component {
 
 
 const mapStateToProps = (state, ownProps) => ({
-    
+    ...state, ...ownProps
 })
 
 const mapDispatchToProps = {
