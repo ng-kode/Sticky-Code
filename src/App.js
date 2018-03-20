@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import Notes from './components/notes';
-import Navbar from './components/navbar';
+import Content from './components/content';
+import Topnav from './components/topnav';
 import { Provider } from 'react-redux'
 import reducers from './reducers'
 import { createStore, applyMiddleware } from 'redux'
@@ -12,9 +12,9 @@ class App extends Component {
     return (
       <Provider store={store}>
         <div>
-          <Navbar/>
+          <Topnav/>
           <div className='container-fluid'>
-            <Notes/>
+            <Content/>
           </div>          
         </div>
       </Provider>
