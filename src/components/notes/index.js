@@ -6,17 +6,20 @@ import {  } from '../../actions'
 import Note from '../note';
 
 class Notes extends Component {
+
+    
+    componentDidMount() {
+        const { $ } = this.props.window;
+        $('.notes').packery({
+            // options
+            itemSelector: '.note',
+            gutter: 10
+        });    
+    }
     
     render() {
-        console.log(this.props.window);
-
-        const packeryOps = `{
-            "itemSelector": ".note",
-            "gutter": 10
-        }`
-
         return (
-            <div className="notes" data-packery={packeryOps} ref={el => this.el = el}>
+            <div className="notes" ref={el => this.el = el}>
                 {[1,2,3,4,5,6].map(note => <Note key={note} />)}
             </div>
         )
