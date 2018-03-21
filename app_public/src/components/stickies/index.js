@@ -3,24 +3,24 @@ import './styles.css';
 import { connect } from 'react-redux'
 import {  } from '../../actions'
 
-import Note from '../note';
+import Stickie from '../stickie';
 
-class Notes extends Component {
+class Stickies extends Component {
 
     
     componentDidMount() {
         const { $ } = this.props.window;
-        $('.notes').packery({
+        $('.stickies').packery({
             // options
-            itemSelector: '.note',
+            itemSelector: '.stickie',
             gutter: 10
         });    
     }
     
     render() {
         return (
-            <div className="notes" ref={el => this.el = el}>
-                {[1,2,3,4,5,6].map(note => <Note key={note} />)}
+            <div className="stickies" ref={el => this.el = el}>
+                {[1,2,3,4,5,6].map(stickie => <Stickie key={stickie} />)}
             </div>
         )
     }
@@ -35,4 +35,4 @@ const mapDispatchToProps = {
     
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Notes)
+export default connect(mapStateToProps, mapDispatchToProps)(Stickies)

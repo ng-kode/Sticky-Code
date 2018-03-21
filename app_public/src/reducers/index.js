@@ -1,7 +1,7 @@
 import { combineReducers } from "redux";
-import notes from './notesReducer';
+import stickies from './stickiesReducer';
 
 export default combineReducers({
     window: (state={}) => state,
-    notes
+    stickies
 })

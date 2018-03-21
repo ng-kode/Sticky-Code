@@ -3,14 +3,14 @@ import './styles.css'
 import { connect } from 'react-redux'
 import {  } from '../../actions'
 
-import Notes from '../notes'
+import Stickies from '../stickies'
 
 class Main extends Component {
     render() {
         return (
             <main role='main' className='col-md-9 ml-sm-auto col-lg-10 pt-3 px-4'>
                 <h2>Our Sticky codes will be here</h2>
-                <Notes/>
+                <Stickies/>
             </main>
         )
     }

@@ -3,10 +3,10 @@ import './styles.css'
 import { connect } from 'react-redux'
 import {  } from '../../actions'
 
-class Note extends Component {
+class Stickie extends Component {
     render() {
         return (
-            <div className="card note">
+            <div className="card stickie">
                 <div className="card-body">
                     <h5 className="card-title">Card title</h5>
                     <h6 className="card-subtitle mb-2 text-muted">Card subtitle</h6>
@@ -28,4 +28,4 @@ const mapDispatchToProps = {
     
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Note)
+export default connect(mapStateToProps, mapDispatchToProps)(Stickie)
