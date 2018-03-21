@@ -17,6 +17,6 @@ router.put('/stickies/:stickieId', ctrlStickie.stickiesUpdateOne);
 router.delete('/stickies/:stickieId', ctrlStickie.stickiesDeleteOne);
 
 router.get('/languages', ctrlStickie.languagesList);
-router.get('/editor-themes', ctrlStickie.editorThemesList);
+router.get('/editorThemes', ctrlStickie.editorThemesList);
 
 module.exports = router;
