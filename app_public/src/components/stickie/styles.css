@@ -1,3 +1,36 @@
 .stickie {
     width: 18rem;
+    min-height: 150px;
+    border-radius: .25rem;
+    border: 1px solid rgba(0,0,0,.125);    
+}
+
+.border-ph-right {
+    width: 20px;
+    height: 100%;
+    position: absolute;
+    right: 0;
+    background-color: #FDF6E3;
+    z-index: 1;
+}
+
+.border-ph-bottom {
+    height: 20px;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    background-color: #FDF6E3;
+    z-index: 1;
+}
+
+.ace_content {
+    padding: 10px 0 0 10px;
+}
+
+.ace_scrollbar {
+    display: none;
+}
+
+.stickie:hover {
+    cursor: pointer;
 }
