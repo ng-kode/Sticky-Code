@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import './styles.css';
 import { connect } from 'react-redux'
-import {  } from '../../actions'
+import {
+    getStickies
+} from '../../actions'
 
 import Stickie from '../stickie';
 
@@ -10,6 +12,11 @@ class Stickies extends Component {
     
     componentDidMount() {
         const { $ } = this.props.window;
+
+        this.props.getStickies(() => {
+            console.log(this.props.stickies);
+        });
+
         $('.stickies').packery({
             // options
             itemSelector: '.stickie',
@@ -28,11 +35,13 @@ class Stickies extends Component {
 
 
 const mapStateToProps = (state, ownProps) => ({
-    ...state, ...ownProps
+    window: state.window,
+    stickies: state.stickies.stickies,
+    ...ownProps
 })
 
 const mapDispatchToProps = {
-    
+    getStickies
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Stickies)
