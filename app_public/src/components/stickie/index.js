@@ -6,19 +6,10 @@ import {  } from '../../actions'
 class Stickie extends Component {
 
     createDivAce = () => {
-        const { $, ace } = this.props.window        
-        this._stickieEditor = ace.edit(this._stickie)
-        this._stickieEditor.setValue(`
-this._stickieEditor.setOptions({
-    readOnly: true,
-    highlightActiveLine: false,
-    showGutter: false  
-})
-this._stickieEditor.clearSelection(1);
-this._stickieEditor.setTheme("ace/theme/solarized_light");
-this._stickieEditor.session.setMode('ace/mode/text');
-this._stickieEditor.container.style.pointerEvents="none"
-        `);
+        const { stickie, $, ace } = this.props;
+
+        this._stickieEditor = ace.edit(this._stickie);
+        this._stickieEditor.setValue(stickie.code);
         this._stickieEditor.setOptions({
             readOnly: true,
             highlightActiveLine: false,
@@ -27,7 +18,7 @@ this._stickieEditor.container.style.pointerEvents="none"
         })
         this._stickieEditor.clearSelection(1);
         this._stickieEditor.setTheme("ace/theme/solarized_light");
-        this._stickieEditor.session.setMode(`ace/mode/text`);
+        this._stickieEditor.session.setMode(`ace/mode/${stickie.language}`);
         this._stickieEditor.container.style.pointerEvents="none"
 
         $(this._stickie).append('<div class="border-ph-right"></div>')
@@ -42,16 +33,25 @@ this._stickieEditor.container.style.pointerEvents="none"
 
     render() {
         return (
-            <div className="stickie" ref={component => this._stickie = component}>                
-            </div>
+            <div>
+                <div className="stickie" ref={component => this._stickie = component}></div>
+            </div>            
         )
     }
 }
 
 
-const mapStateToProps = (state, ownProps) => ({
-    ...state, ...ownProps
-})
+const mapStateToProps = (state, ownProps) => {
+    const { stickies, window } = state;
+    const stickie = stickies.stickies[ownProps.index]
+    const { $, ace } = window;
+    return {
+        $,
+        ace,
+        stickie,
+        ...ownProps
+    }
+}
 
 const mapDispatchToProps = {
     

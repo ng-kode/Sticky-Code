@@ -9,13 +9,10 @@ import Stickie from '../stickie';
 
 class Stickies extends Component {
 
-    
     componentDidMount() {
-        const { $ } = this.props.window;
+        const { $ } = this.props;
 
-        this.props.getStickies(() => {
-            console.log(this.props.stickies);
-        });
+        this.props.getStickies();
 
         $('.stickies').packery({
             // options
@@ -25,20 +22,26 @@ class Stickies extends Component {
     }
     
     render() {
+        const { stickies } = this.props;
         return (
-            <div className="stickies" ref={el => this.el = el}>
-                {[1,2,3,4,5,6].map(stickie => <Stickie key={stickie} />)}
+            <div className="stickies">                
+                {stickies.map((stickie, i) => 
+                    <Stickie key={i} index={i} />
+                )}
             </div>
         )
     }
 }
 
 
-const mapStateToProps = (state, ownProps) => ({
-    window: state.window,
-    stickies: state.stickies.stickies,
-    ...ownProps
-})
+const mapStateToProps = (state, ownProps) => {
+    const { window, stickies } = state;
+    return {
+        $: window.$,
+        stickies: stickies.stickies,
+        ...ownProps
+    }
+}
 
 const mapDispatchToProps = {
     getStickies
