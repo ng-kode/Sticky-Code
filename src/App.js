@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import Content from './components/content';
-import Topnav from './components/topnav';
+import Body from './components/Body';
+import Topnav from './components/Topnav';
 import { connect } from 'react-redux'
 import { } from '../src/actions'
 
@@ -10,7 +10,7 @@ class App extends Component {
         <div>
           <Topnav/>
           <div className='container-fluid'>
-            <Content/>
+            <Body/>
           </div>          
         </div>      
     );

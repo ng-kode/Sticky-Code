@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
-import './styles.css'
+import './Stickie.css'
 import { connect } from 'react-redux'
-import {  } from '../../actions'
+import {  } from '../actions'
 
 class Stickie extends Component {
 
     createDivAce = () => {
-        const { stickie, $, ace } = this.props;
+        const { stickie } = this.props;
+        const { ace } = window;
 
         this._stickieEditor = ace.edit(this._stickie);
         this._stickieEditor.setValue(stickie.code);
@@ -17,12 +18,12 @@ class Stickie extends Component {
             wrapBehavioursEnabled: true
         })
         this._stickieEditor.clearSelection(1);
-        this._stickieEditor.setTheme("ace/theme/solarized_light");
-        this._stickieEditor.session.setMode(`ace/mode/${stickie.language}`);
+        this._stickieEditor.setTheme("ace/theme/monokai");
+        this._stickieEditor.session.setMode(`ace/mode/${stickie.language.toLowerCase()}`);
         this._stickieEditor.container.style.pointerEvents="none"
 
-        $(this._stickie).append('<div class="border-ph-right"></div>')
-        $(this._stickie).append('<div class="border-ph-bottom"></div>')
+        // $(this._stickie).append('<div class="border-ph-right"></div>')
+        // $(this._stickie).append('<div class="border-ph-bottom"></div>')
     }
     
     
@@ -32,22 +33,17 @@ class Stickie extends Component {
     
 
     render() {
-        return (
-            <div>
-                <div className="stickie" ref={component => this._stickie = component}></div>
-            </div>            
+        return (            
+            <div className="stickie" ref={component => this._stickie = component}></div>                   
         )
     }
 }
 
 
 const mapStateToProps = (state, ownProps) => {
-    const { stickies, window } = state;
+    const { stickies } = state;
     const stickie = stickies.stickies[ownProps.index]
-    const { $, ace } = window;
     return {
-        $,
-        ace,
         stickie,
         ...ownProps
     }

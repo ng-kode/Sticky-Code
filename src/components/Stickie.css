@@ -1,8 +1,9 @@
 .stickie {
-    width: 18rem;
+    width: 32.5%;
     min-height: 150px;
     border-radius: .25rem;
-    border: 1px solid rgba(0,0,0,.125);    
+    border: 1px solid rgba(0,0,0,.125);
+    font-size: 13px;
 }
 
 .border-ph-right {

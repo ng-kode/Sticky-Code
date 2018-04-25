@@ -1,43 +1,42 @@
 import React, { Component } from 'react';
-import './styles.css';
+import './Stickies.css';
 import { connect } from 'react-redux'
 import {
     getStickies
-} from '../../actions'
+} from '../actions'
 
-import Stickie from '../stickie';
+import Stickie from './Stickie';
 
 class Stickies extends Component {
 
     componentDidMount() {
-        const { $ } = this.props;
+        const { $ } = window;
 
         this.props.getStickies();
 
         $('.stickies').packery({
             // options
             itemSelector: '.stickie',
-            gutter: 10
+            gutter: 8
         });    
     }
     
     render() {
         const { stickies } = this.props;
-        return (
+        return (            
             <div className="stickies">                
                 {stickies.map((stickie, i) => 
                     <Stickie key={i} index={i} />
                 )}
-            </div>
+            </div>            
         )
     }
 }
 
 
 const mapStateToProps = (state, ownProps) => {
-    const { window, stickies } = state;
+    const { stickies } = state;
     return {
-        $: window.$,
         stickies: stickies.stickies,
         ...ownProps
     }
