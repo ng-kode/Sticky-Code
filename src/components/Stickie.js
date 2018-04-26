@@ -1,7 +1,12 @@
 import React, { Component } from 'react';
-import './Stickie.css'
+import './Stickie.css';
 import { connect } from 'react-redux'
 import {  } from '../actions'
+import brace from 'brace';
+import AceEditor from 'react-ace';
+
+import 'brace/mode/javascript';
+import 'brace/theme/monokai';
 
 class Stickie extends Component {
 
@@ -28,13 +33,36 @@ class Stickie extends Component {
     
     
     componentDidMount() {
-        this.createDivAce()
+        // this.createDivAce()
     }
     
 
     render() {
-        return (            
-            <div className="stickie" ref={component => this._stickie = component}></div>                   
+        //<div className="stickie" ref={component => this._stickie = component}></div>
+        const {
+            language,
+            code
+        } = this.props.stickie;
+
+        const {
+            index,
+            stickieWidth,
+        } = this.props;
+                
+        return (
+            <AceEditor
+                className={`stickie col-md-${stickieWidth}`}
+                height='250px'
+                name={index.toString()}
+                mode={language.toLowerCase()}
+                value={code}
+                theme="monokai"
+                onChange={() => {}}                
+                editorProps={{$blockScrolling: true}}
+                showGutter={false}
+                wrapEnabled={true}
+                readOnly={true}
+            />            
         )
     }
 }
